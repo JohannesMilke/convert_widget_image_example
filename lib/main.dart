@@ -31,10 +31,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  GlobalKey key1;
-  GlobalKey key2;
-  Uint8List bytes1;
-  Uint8List bytes2;
+  late GlobalKey key1;
+  late GlobalKey key2;
+  Uint8List bytes1 = Uint8List(0);
+  Uint8List bytes2 = Uint8List(0);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -60,8 +60,8 @@ class _MainPageState extends State<MainPage> {
               },
             ),
             TitleWidget('Images'),
-            buildImage(bytes1),
-            buildImage(bytes2),
+           bytes1.isNotEmpty ? buildImage(bytes1) : SizedBox(),
+            bytes2.isNotEmpty ? buildImage(bytes2) : SizedBox(),
           ],
         ),
         bottomSheet: Container(
